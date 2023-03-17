@@ -1,6 +1,10 @@
 - hosts: all
   become:
   tasks:
+   - name: docker pull images
+     shell: docker pull thivakarp/demo:latest
+   - name: container
+     shell: docker run -itd --name demo -p 8090:8080 thivakarp/demo:latest
    - name: stop container
      shell: docker stop demo
    - name: remove container
